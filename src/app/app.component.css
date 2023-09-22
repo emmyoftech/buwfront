@@ -1,0 +1,64 @@
+*.hide{
+    display: none;
+}
+.float_back{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(../assets/static/w_3.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    filter: blur(var(--large_number));
+}
+.main-app.loggedIn{
+    background-image: none;
+    background: black;
+}
+.float_back.loggedIn{
+    background-color: #000000c6;
+    background-blend-mode: color-dodge;
+    background-image: url(../assets/static/skyline.jpg);
+}
+.main-app{
+    background-image: url(../assets/static/w_3.jpg);
+    background-attachment: fixed;
+    background-position: right;
+    background-size: cover;
+    position: absolute;
+    width: 92%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--large_number);
+    box-shadow: var(--c_shadow);
+    overflow: hidden;
+}
+.main-app.loggedIn .second-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/static/skyline.jpg);
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+    background-repeat: no-repeat;
+}
+.blur_background{
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    inset: 0;
+    z-index: -1;
+    backdrop-filter: blur(var(--large_number));
+}
+@media (max-width : 500px) {
+    .main-app{
+        background-position: none;
+        background-position-x: 50%;
+        background-image: url(../assets/static/docx.jpg)
+    }
+}

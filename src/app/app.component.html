@@ -1,0 +1,11 @@
+<div class="float_back" [ngClass]="nol ? 'loggedIn' : ''"></div>
+<main class="main-app" [ngClass]="nol ? 'loggedIn' : ''">
+    <div [ngClass]="nol ? 'hide' : ''" class="floatboxes"></div>
+    <div [ngClass]="nol ? 'hide' : ''" class="bubblepop"></div>
+    <div [ngClass]="nol ? '' : 'hide'" class="second-background"></div>
+    <div *ngIf="see_view" class="blur_background"></div>
+    <app-nav (open_mobile_coll)="open_m_com($event)" (chnage_to_home)="change_to_Home($event)" (childboolean_2)="loggedIn($event)" (kyc_change)="know_customer($event)" [k_y_c]="kyc" [parentData]="nol" [userdata]="userdata" [view]="see_view" [mob_com]="m_c"></app-nav>
+    <app-frontpage (op_view)="open_view($event)" (childboolean)="loggedIn($event)" [k_y_c]="kyc" *ngIf="!nol && !see_view"></app-frontpage>
+    <app-buildpage (mob_to_open)="open_m_com($event)" [mobile_collection]="m_c" *ngIf="nol && !see_view" [userData]="userdata"></app-buildpage>
+    <app-view (login)="loggedIn($event)" (signup)="loggedIn($event)" [userData]="userdata" (ch_to_hm)="change_to_Home($event)" *ngIf="see_view"></app-view>
+</main>

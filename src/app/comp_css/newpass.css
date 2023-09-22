@@ -1,0 +1,10 @@
+.newpass{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: var(--large_number);
+}
+.newpass h1 {
+    font-family: var(--title_font);
+}

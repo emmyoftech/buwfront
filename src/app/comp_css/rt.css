@@ -1,0 +1,38 @@
+:root{
+    --line: var(--failed_color) solid 2px;
+    --title_font: cursive;
+    --body_font: sans-serif;
+    --small_number: 5px;
+    --base_number: 10px;
+    --large_number: 20px;
+    --mid_number: calc(var(--base_number) + var(--small_number));
+    --mid_black_color: #00000085;
+    --low_black_color: #00000043;
+    --title_font_color: #EEE8A9;
+    --succ_color: #008000; 
+    --primary_color_1: #fff;
+    --shadow: 0px 0px 10px var(--mid_black_color);
+    --t_shadow: 0px 0px 10px 3px rgba(135, 207, 235, 0.222);
+    --failed_color: #ff0000; 
+    --b_r_shadow: 5px 5px 5px var(--mid_black_color);
+    --c_shadow: 0px 0px 10px 5px var(--mid_black_color);
+    --passive_color: #f5f5f5;
+    --standard_color: #5f9ea0;
+    --low_standard_color: #5f9ea083;
+    --n_grren: #93F7B2;
+    --med_color: orange;
+    --line_blue:  var(--low_standard_color) solid 2px;
+    --primary_transition: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --bubbleShadowlow: inset 10px 10px 10px rgba(0, 0, 0, 0.2),
+    15px 25px 10px rgba(0, 0, 0, 0.2),
+    15px 20px 20px rgba(0, 0, 0, 0.2),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.2);
+    --bubbleShadowmid: inset 10px 10px 10px rgba(0, 0, 0, .5),
+    15px 25px 10px rgba(0, 0, 0, .5),
+    15px 20px 20px rgba(0, 0, 0, .5),
+    inset -10px -10px 15px rgba(255, 255, 255, .5);
+    --bubbleShadowhigh: inset 10px 10px 10px rgba(0, 0, 0, .9),
+    15px 25px 10px rgba(0, 0, 0, .9),
+    15px 20px 20px rgba(0, 0, 0, .9),
+    inset -10px -10px 15px rgba(255, 255, 255, .7);
+}

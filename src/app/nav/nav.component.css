@@ -1,0 +1,142 @@
+nav{
+    width: 95%;
+    height: 10vh;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    color: var(--passive_color);
+    justify-content: space-between;
+}
+nav button{
+    transition: .3s ease;
+}
+.signup-login button{
+    text-transform: uppercase;
+    font-family: var(--title_font);
+    font-weight: bolder;
+    padding: var(--base_number) var(--large_number);
+    background-color: var(--standard_color);
+    border-radius: var(--small_number);
+    box-shadow: var(--bubbleShadowmid);
+    border: none;
+    outline: none;
+    font-size: calc(var(--base_number) + 3px);
+    color: var(--passive_color);
+    cursor: pointer;
+}
+.signup-login button:not(.home_btn){
+    margin-left: calc(var(--base_number) * 15);
+}
+.signup-login button:not(.home_btn).spc{
+    margin-left: var(--large_number);
+}
+nav button:hover{
+    background-color: var(--low_standard_color);
+}
+.icon_links{
+    width: 40%;
+    max-width: 150px;
+    min-width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icon_links a{
+    font-size: calc(var(--base_number) * 2);
+    color: var(--passive_color);
+    box-shadow: var(--bubbleShadowlow);
+    padding: var(--small_number);
+    animation:  waveEffect 2s ease-in-out infinite;
+    transition: .3s var(--primary_transition);
+}
+.icon_links a:hover{
+    background-color: var(--low_standard_color);
+}
+.icon_links button{
+    margin: 0 10px;
+}
+.profile_ban{
+    width: max-content;
+    min-width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--title_font);
+    box-shadow: var(--bubbleShadowlow);
+    border-radius: var(--small_number);
+    cursor: pointer;
+    padding: var(--small_number) var(--base_number);
+}
+.profile_ban.hidden{
+    opacity: 0;
+}
+.profile_ban > span{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: var(--base_number);
+}
+.profile_ban p{
+    position: relative;
+}
+.profile_ban p > span{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: var(--succ_color);
+    border-radius: 50%;
+    border: wheat solid 1px;
+}
+.logpot{
+    background-color: transparent;
+    border-radius: var(--small_number);
+    box-shadow: var(--bubbleShadowmid);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: var(--base_number) var(--large_number);
+    font-size:  16px;
+    color: var(--n_grren);
+    text-transform: capitalize;
+}
+.home_btn{
+    background-color: transparent;
+}
+.hamburger , .collection_list{
+    display: none;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: var(--large_number);
+    border-radius: var(--base_number);
+    box-shadow: var(--bubbleShadowlow);
+}
+.collection_list.hidden{
+    opacity: 0;
+}
+.collection_list{
+    color: var(--n_grren);
+}
+@media (max-width: 1000px) {
+    .collection_list{
+        display: grid;
+    }
+    .logpot{
+        display: none;
+    }
+}
+@media (max-width: 500px) {
+    .icon_links{
+        display: none;
+    }
+    .signup-login button:not(.home_btn) {
+        display: none;
+    }
+
+    .hamburger{
+        display: grid;
+    }
+}

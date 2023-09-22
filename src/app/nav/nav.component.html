@@ -1,0 +1,24 @@
+<nav>
+    <div class="signup-login" *ngIf="!parentData">
+        <button (click)="change_to_home_meth()" *ngIf="view" class="home_btn"> <i class="fa-solid fa-house"></i> home</button>
+        <button (click)="loginuser()" *ngIf="k_y_c" [ngClass]=" view ? 'spc' : ''">login</button>
+        <button (click)="signupUser()" *ngIf="!k_y_c" [ngClass]=" view ? 'spc' : ''">sign up</button>
+    </div>
+
+    <div class="profile_ban" [ngClass]="mob_com ? 'hidden' : ''" *ngIf="parentData" (click)="open_profiler()">
+        <span [ngStyle]="color" >{{returnfirststring(userdata.user)}}</span>
+        <p>Profile<span *ngIf="userdata.verification"></span></p>
+    </div>
+    <div class="icon_links"  *ngIf="!parentData">
+        <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+        <a href=""><i class="fa-brands fa-github"></i></a>
+        <a href=""><i class="fa-solid fa-phone"></i></a>
+    </div>
+    <button *ngIf="parentData" class="logpot" (click)="log_u()">log out</button>
+    <span *ngIf="!parentData" (click)="open_hamburger()" class="hamburger">
+        <i class="fa-solid fa-bars"></i>
+    </span>
+    <span *ngIf="parentData" class="collection_list" (click)="open_m_c()" [ngClass]="mob_com ? 'hidden' : ''">
+        <i class="fa-solid fa-list"></i>
+    </span>
+</nav>

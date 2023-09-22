@@ -1,0 +1,103 @@
+<main *ngIf="!mobile_collection">
+    <div class="actionContainer">
+        <div class="view">
+            <div class="img_big_box">
+                <img [src]="oneStrap" alt="strap image">
+                <img [src]="oneCase" alt="case image">
+                <img [src]="oneDial" alt="dial image">
+            </div>
+            <div class="priceset">
+                <span>
+                    <h3>strap</h3>
+                    <p>{{strapPrice | currency : '₦'}}</p>
+                </span>
+                <span>
+                    <h3>dial</h3>
+                    <p>{{dialPrice | currency : '₦'}}</p>
+                </span>
+                <span>
+                    <h3>case</h3>
+                    <p>{{casePrice | currency : '₦'}}</p>
+                </span>
+                <hr>
+                <span>
+                    <h3>total</h3>
+                    <p>{{(total) | currency : '₦'}}</p>
+                </span>
+            </div>
+        </div>
+        <div class="view-control">
+            <div class="parts-panel">
+                <h4>dials</h4>
+                <ul>
+                    <li *ngFor="let i of dial; let b = index" [ngClass]="i.selected ? 'selected' : ''" (click) = "selectitemandsetit(i.pathName , i.category)">
+                        <img [src]="i.pathName" alt="dial image">
+                    </li>
+                </ul>
+            </div>
+            <div class="parts-panel">
+                <h4>cases</h4>
+                <ul>
+                    <li *ngFor="let i of case; let b = index" [ngClass]="i.selected ? 'selected' : ''" (click) = "selectitemandsetit(i.pathName , i.category)">
+                        <img [src]="i.pathName" alt="case image">
+                    </li>
+                </ul>
+            </div>
+            <div class="parts-panel">
+                <h4>straps</h4>
+                <ul>
+                    <li *ngFor="let i of strap; let b = index" [ngClass]="i.selected ? 'selected' : ''" (click) = "selectitemandsetit(i.pathName, i.category)">
+                        <img [src]="i.pathName" alt="strap image">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="colections_holder" *ngIf="collection_list">
+            <h4>my collections ({{collection_list.length >= 1 ? collection_list.length : 0}})</h4>
+            <ul class="fl_list_body">
+                <li class="coll_unit" *ngFor="let col of collection_list; let num = index">
+                    <div class="img_coll_hold">
+                        <img [src]="parts_img_set('strap',col.parts.strap_img_name)" class="sm_strap" alt="">
+                        <img [src]="parts_img_set('case',col.parts.case_img_name)" class="sm_case" alt="">
+                        <img [src]="parts_img_set('dial',col.parts.dial_img_name)" class="sm_dial" alt="">
+                    </div>
+                    <div class="coll_info">
+                        <h3>#{{col.name}}</h3>
+                        <p>{{col.price | currency : "₦"}}</p>
+                        <p>{{col.date}}</p>
+                    </div>
+                    <span (click)="del_col(num , col)" class="delete_col"><i class="fa-solid fa-trash"></i></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="buttonhold">
+        <button (click) = "onShuffle()">shuffle <i class="fa-solid fa-shuffle"></i></button>
+        <button (click) = "saveCombination()">create <i class="fa-solid fa-plus"></i></button>
+    </div>
+</main>
+<div class="float_coll_list" *ngIf="mobile_collection">
+    <nav class="fl_head">
+        <h3>my collections ({{collection_list ? collection_list.length : 0}})</h3>
+        <i (click)="mob_changer()" class="fa-solid fa-circle-xmark"></i>
+    </nav>
+    <ul class="fl_list_body" *ngIf="collection_list">
+        <li class="coll_unit" *ngFor="let col of collection_list; let num = index">
+            <div class="img_coll_hold">
+                <img [src]="parts_img_set('strap',col.parts.strap_img_name)" class="sm_strap" alt="">
+                <img [src]="parts_img_set('case',col.parts.case_img_name)" class="sm_case" alt="">
+                <img [src]="parts_img_set('dial',col.parts.dial_img_name)" class="sm_dial" alt="">
+            </div>
+            <div class="coll_info">
+                <h3>#{{col.name}}</h3>
+                <p>{{col.price | currency : "₦"}}</p>
+                <p>{{col.date}}</p>
+            </div>
+            <span (click)="del_col(num , col)" class="delete_col"><i class="fa-solid fa-trash"></i></span>
+        </li>
+    </ul>
+    <div class="fl_empty_list" *ngIf="!collection_list">
+        <i class="fa-regular fa-folder-open"></i>
+        <h3>you dont have any collections</h3>
+    </div>
+</div>

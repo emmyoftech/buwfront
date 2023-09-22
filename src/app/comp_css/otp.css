@@ -1,0 +1,14 @@
+.otp{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: var(--base_number);
+    width: 100%;
+}
+.otp h1 {
+    font-family: var(--title_font);
+    font-size: var(--large_number);
+}
+.otp h1::first-letter{
+    text-transform: capitalize;
+}

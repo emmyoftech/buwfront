@@ -1,0 +1,52 @@
+<main>
+    <div class="loader" *ngIf="loading">
+        <i class="fa-solid fa-fan"></i>
+        <p>loading...</p>
+    </div>
+    <div class="personal_ban" *ngIf="personal_colls != undefined && !loading">
+        <h3>personal collections({{num_of_per_colls}})</h3>
+        <div class="p_list_v_m">
+            <ul class="per_coll_holder">
+                <li class="coll_hld" *ngFor="let num of personal_colls">
+                    <div class="img_bag">
+                        <img [src]="num.parts.strap_img_name" class="st" alt="">
+                        <img [src]="num.parts.case_img_name" class="cs" alt="">
+                        <img [src]="num.parts.dial_img_name" class="di" alt="">
+                    </div>
+                    <div class="img_det">
+                        <h4>#{{num.name}}</h4>
+                    </div>
+                </li>
+                <div (click)="log_user()" class="view_mr inner" *ngIf="is_mobile && if_per_colls_gr_five">
+                    <span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <p>view more</p>
+                </div>
+            </ul>
+            <div (click)="log_user()" class="view_mr outer" *ngIf="if_per_colls_gr_five && !is_mobile">
+                <span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </span>
+                <p>view more</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="all_others_pan" *ngIf="!loading">
+        <h3>all collections</h3>
+        <ul class="pub_coll_holder">
+            <li class="coll_hld" *ngFor="let collect of all_collection">
+                <div class="img_bag">
+                    <img [src]="collect.parts.strap_img_name" class="st" alt="">
+                    <img [src]="collect.parts.case_img_name" class="cs" alt="">
+                    <img [src]="collect.parts.dial_img_name" class="di" alt="">
+                </div>
+                <div class="img_det">
+                    <h4>#{{collect.name}}</h4>
+                    <p>by <span>{{collect.user == userData.user ? "you" : collect.user}}</span></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</main>

@@ -1,0 +1,154 @@
+.prodview{
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-flow: column;
+    gap: var(--large_number);
+    position: relative;
+    padding-top: 20px;
+}
+.prodview nav{
+    display: flex;
+    justify-content: flex-end;
+    padding: var(--base_number);
+}
+.prodview nav i {
+    font-size: var(--large_number);
+    transition: .3s ease;
+    cursor: pointer;
+}
+.prodview nav i:hover{
+    color: var(--standard_color);
+}
+.prodview main{
+    height: 350px;
+    display: flex;
+    gap: var(--large_number);
+    padding: var(--base_number) 0;
+}
+.prodview main div:is(.right-info-hold , .left-img-hold){
+    flex: 1;
+}
+.left-img-hold{
+    border-radius: var(--base_number);
+    position: relative;
+    overflow: hidden;
+    filter: drop-shadow(5px 5px 10px var(--mid_black_color));
+}
+.left-img-hold img{
+    position: absolute;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    object-fit: contain;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    transition: .3s var(--primary_transition);
+}
+.left-img-hold img.pr_strap{
+    opacity: 0;
+}
+.left-img-hold img.pr_strap.active{
+    opacity: 1;
+}
+.left-img-hold img.pr_case{
+    width: 60%;
+    transform: translate(-50% , -50%) scale(5);
+    opacity: 0;
+}
+.left-img-hold img.pr_dial{
+    width: 50%;
+    transform: translate(-50% , -50%) scale(5);
+    opacity: 0;
+}
+.left-img-hold img:not(.pr_strap).active{
+    opacity: 1;
+    transform: translate(-50% , -50%) scale(1);
+}
+.right-info-hold{
+    display: flex;
+    flex-flow: column;
+    gap: calc(var(--base_number) * 3);
+    padding-top: calc(var(--base_number) * 3);
+    background-color: var(--low_black_color);
+    border-radius: var(--small_number);
+}
+.right-info-hold i:not(.fa-solid){
+    text-transform: capitalize;
+}
+.name_inp{
+    display: flex;
+    gap: var(--base_number);
+    max-height: 40px;
+    align-items: center;
+    padding-right: var(--base_number);
+}
+.name_inp p{
+    font-family: var(--title_font);
+    font-weight: bolder;
+    color: var(--low_black_color);
+}
+.name_inp input{
+    font-size: var(--mid_number);
+    font-family: var(--title_font);
+}
+.name_inp input::placeholder{
+    color: rgba(245, 245, 245, 0.65);
+}
+.money_tag , .part_hold{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--base_number);
+    color: lightgray;
+}
+.money_tag i{
+    font-size: var(--large_number);
+    color: var(--succ_color);
+}
+.money_tag h4{
+    font-size: var(--mid_number);
+    font-family: var(--title_font);
+}
+
+.prodview bottom{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 var(--base_number) var(--base_number) 0;
+}
+.prodview bottom button{
+    padding: var(--base_number) calc(var(--base_number)  + var(--small_number));
+    border-radius: var(--base_number);
+    border: none;
+    outline: none;
+    box-shadow: var(--b_r_shadow);
+    background-color: var(--standard_color);
+    font-size: var(--mid_number);
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: .4s ease;
+}
+.prodview bottom button i{
+    font-size: var(--large_number);
+}
+.prodview bottom button:hover{
+    transform: scale(.9);
+    background-color: var(--low_black_color);
+    color: var(--standard_color);
+}
+.prodview bottom > i{
+    font-size: calc(var(--base_number) * 3);
+    animation: rot 3s linear infinite;
+}
+@media (max-width: 500px) {
+    .left-img-hold img:not(.pr_strap).active{
+        transform: translate(-50% , -50%) scale(1.3);
+    }
+    .left-img-hold img{
+        transform: translate(-50% , -50%) scale(1.4);
+    }
+    .name_inp input::placeholder{
+        font-size: 10px;
+        letter-spacing: 1px;
+    }
+}
