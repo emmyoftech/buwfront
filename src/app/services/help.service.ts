@@ -25,8 +25,8 @@ export class ModalsServices {
         this.newdev.className = "floater"
         this.newdev.innerHTML = `
             <section class="float-box ${this.class_state == undefined ? "" : this.class_state}">
-                <h2 class="${this.title == undefined ? "hide" : ""}" >${this.title}</h2>
                 <p class="endModal hide" title="close"><i class="fa-solid fa-circle-xmark"></i></p>
+                <h2 class="${this.title == undefined ? "hide" : ""}" >${this.title}</h2>
                 ${this.inHtml}
             </section>
         `
@@ -352,7 +352,7 @@ export class ModalsServices {
                             error: (err: any )=>{
                                 if(err.error && typeof err.error != "string"){
                                     if(err.status == 0){
-                                        frmload("off",false,"Oops seems you are offline")
+                                        frmload("off",false,"Seems our server is offline")
                                     }else{
                                         frmload("off",false,err.statusText)
                                     }
@@ -398,7 +398,7 @@ export class ModalsServices {
                             error: (err) => {
                                 if(err.error && typeof err.error != "string"){
                                     if(err.status == 0){
-                                        frmload("off",false,"Oops seems you are offline")
+                                        frmload("off",false,"Seems our server is offline")
                                     }else{
                                         frmload("off",false,err.statusText)
                                     }
@@ -997,9 +997,9 @@ export class ModalsServices {
             <button id="log"> login </button>
             <button id="sign"> sign up </button>
             <div class="social-hold">
-                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
-                <a href=""><i class="fa-brands fa-github"></i></a>
-                <a href=""><i class="fa-solid fa-phone"></i></a>
+                <a href="https://www.linkedin.com/in/emmanuel-lasisi-7139b5233/"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/emmyoftech"><i class="fa-brands fa-github"></i></a>
+                <a href="tel:+2349066057393"><i class="fa-solid fa-phone"></i></a>
             </div>
         </div>
         `

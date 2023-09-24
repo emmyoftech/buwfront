@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http"
 import { Observable } from "rxjs"
 import { Watchparts } from '../interfaces/watchparts';
 import { SignupLoginModel } from '../interfaces/signup-login-model';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 import { MyResponse } from '../interfaces/my-response';
 import { Cred } from '../interfaces/cred';
 import { Collection } from '../interfaces/collection';

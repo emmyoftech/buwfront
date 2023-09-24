@@ -47,12 +47,12 @@
 }
 /* ANIMATION BLOCK END */
 /* IMPORTS */
-@import "./app/comp_css/rt.css";
-@import "./app/comp_css/profile.css";
-@import "./app/comp_css/pro_v.css";
-@import "./app/comp_css/fpass.css";
-@import "./app/comp_css/otp.css";
-@import "./app/comp_css/newpass.css";
+@import "./assets/comp_css/rt.css";
+@import "./assets/comp_css/profile.css";
+@import "./assets/comp_css/newpass.css";
+@import "./assets/comp_css/otp.css";
+@import "./assets/comp_css/fpass.css";
+@import "./assets/comp_css/pro_v.css";
 /* ======================================== */
 body{
     display: flex;
@@ -84,7 +84,7 @@ body{
     min-width: 320px;
     max-width: 600px;
     border-radius: var(--base_number);
-    padding: 0  var(--base_number);
+    padding: 0  var(--base_number) var(--base_number) var(--base_number) ;
     transition: .5s var(--primary_transition);
     box-shadow: var(--t_shadow);
     display: flex;
@@ -101,12 +101,11 @@ body{
 .float-box .endModal{
     width: 20px;
     height: 20px;
-    position: absolute;
+    align-self: flex-start;
+    position: relative;
     display: grid;
     place-items: center;
     font-size: var(--large_number);
-    left: 10px;
-    top: 10px;
     cursor: pointer;
     z-index: 2;
     color: var(--n_grren);
@@ -203,8 +202,9 @@ body{
     text-transform: uppercase;
 }
 #log_sign_frm span{
-    font-size: var(--large_number);
+    font-size: calc(var(--large_number) - 5px);
     color: var(--passive_color);
+    text-align: center;
 }
 #log_sign_frm span i{
     animation: rot 5s linear;
