@@ -53,7 +53,7 @@ export class AppComponent implements OnInit{
 
   bubblefall():void{
     let r = document.querySelector(".floatboxes") 
-    if(r != null){
+    if(r != null && window.innerWidth > 500){
       for(let i = 0; i < 40; i++){
         let box = window.document.createElement("div")
         let w_h = this.modal.randomArrayWithRange(10,50)

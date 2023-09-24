@@ -445,3 +445,8 @@ body{
     border-radius: var(--base_number);
     box-shadow: var(--bubbleShadowlow);
 }
+@media (max-width) {
+    .floatboxes{
+        display: none;
+    }
+}
