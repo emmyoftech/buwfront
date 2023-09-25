@@ -55,16 +55,17 @@ export class ViewComponent implements OnInit{
             return nm
           }
         })
-        let per_coll = e.filter((item) => item.user == this.userData.user)
-
-      if(per_coll.length > 0){
-        this.personal_colls = per_coll.reverse()
-        this.num_of_per_colls = per_coll.length
-        if(per_coll.length > 5){
-          this.if_per_colls_gr_five = true
-          this.personal_colls = per_coll.slice(0 , 4)
+        if(this.userData){
+          let per_coll = e.filter((item) => item.user == this.userData.user)
+          if(per_coll.length > 0){
+            this.personal_colls = per_coll.reverse()
+            this.num_of_per_colls = per_coll.length
+            if(per_coll.length > 5){
+              this.if_per_colls_gr_five = true
+              this.personal_colls = per_coll.slice(0 , 4)
+            }
+          }
         }
-      }
 
       if(e.length > 0){
         this.all_collection = e

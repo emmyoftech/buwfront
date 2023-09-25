@@ -30,7 +30,6 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.bubblefall()
-    this.bublewave()
   }
 
   open_m_com(eve: boolean){
@@ -42,8 +41,9 @@ export class AppComponent implements OnInit{
     if(this.see_view) this.see_view = false
     let usedata = localStorage.getItem("BUW_data")
     let session = sessionStorage.getItem("BUW_session")
-    if(typeof usedata == "string"){
+    if(typeof usedata == "string" && usedata){
       this.userdata = JSON.parse(usedata)
+      this.kyc = true
     }
     if(session == null) sessionStorage.setItem("BUW_session" , "logged_in")
   }
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit{
 
   bubblefall():void{
     let r = document.querySelector(".floatboxes") 
-    if(r != null && window.innerWidth > 500){
+    if(r != null && window.innerWidth >1200){
       for(let i = 0; i < 40; i++){
         let box = window.document.createElement("div")
         let w_h = this.modal.randomArrayWithRange(10,50)

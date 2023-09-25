@@ -44,7 +44,8 @@
                 </div>
                 <div class="img_det">
                     <h4>#{{collect.name}}</h4>
-                    <p>by <span>{{collect.user == userData.user ? "you" : collect.user}}</span></p>
+                    <p *ngIf="userData">by <span>{{collect.user == userData.user ? "you" : collect.user}}</span></p>
+                    <p *ngIf="!userData">by <span>{{collect.user}}</span></p>
                 </div>
             </li>
         </ul>
