@@ -203,7 +203,6 @@ body{
 }
 #log_sign_frm span{
     font-size: calc(var(--large_number) - 5px);
-    color: var(--passive_color);
     text-align: center;
 }
 #log_sign_frm span i{
