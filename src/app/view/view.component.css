@@ -148,9 +148,6 @@ ul{
     main::-webkit-scrollbar{
         display: none;
     }
-    .per_coll_holder{
-        flex-basis: 140px;
-    }
     .coll_hld{
         width: 130px;
         height: 240px;
