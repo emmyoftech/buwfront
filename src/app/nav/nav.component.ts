@@ -12,7 +12,9 @@ import { Cred } from '../interfaces/cred';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  constructor(public helper: ModalsServices, private watch: WatchpartsService) {}
+  constructor(public helper: ModalsServices, private watch: WatchpartsService) {
+    // this.open_profiler()
+  }
   @Input() parentData !: boolean
   @Input() k_y_c !: boolean
   @Input() userdata !: UserCahedData
@@ -52,12 +54,9 @@ export class NavComponent {
         all_panel = dom.querySelector<HTMLDivElement>(".main-profile-container")?.querySelectorAll<HTMLDivElement>(".page")
 
       menu_btn?.addEventListener("click", () => {
-        let ver_field = dom.querySelector("#verification"),
-        ver_list = dom.querySelector("#verify_me"),
-        nav_hold = menu_btn?.parentElement
+        let nav_hold = menu_btn?.parentElement
         if(nav_hold) nav_hold.classList.add("hide")
         menu_hold?.classList.add("active")
-        if (ver_field != null && ver_field.textContent != "not verified" && ver_list) ver_list.classList.add("disabled")
 
         all_list?.forEach((item) => {
           item.addEventListener("click", () => {
@@ -74,6 +73,17 @@ export class NavComponent {
               all_panel?.forEach((sub_item) => {
                 if (item.dataset["page"] == sub_item.dataset['page']) {
                   sub_item.classList.remove("hide")
+                  switch(sub_item.dataset['page']){
+                    case "dashboard": this.set_up_user_dashbord(dom)
+                    break;
+                    case "edit": 
+                      if(user_data) this.set_up_edit_panel(user_data ,dom)
+                    break
+                    case "verify": if(user_data) this.setup_email_verification(dom , user_data)
+                    break
+                    default : alert("me")
+                    break
+                  }
                 } else {
                   sub_item.classList.add("hide")
                 }
@@ -109,8 +119,11 @@ export class NavComponent {
       })
 
       this.set_up_user_dashbord(dom)
-      if (user_data != null) this.set_up_edit_panel(user_data, dom)
-      this.setup_email_verification(dom)
+      if (user_data != null) {
+        this.set_up_edit_panel(user_data, dom)
+        this.setup_email_verification(dom , user_data)
+      }
+      
       this.setup_left_bar(dom)
     })
   }
@@ -167,16 +180,20 @@ export class NavComponent {
       titletag = main_edit_model?.querySelector("#edit_title"),
       allinputs = main_edit_model?.querySelectorAll<HTMLInputElement>("input"),
       con_pass_btn = main_edit_model?.querySelector<HTMLButtonElement>(".spec_btn")
-    con_pass_btn?.addEventListener("click", con_pass)
-    let profile_con = maindocument.querySelector<HTMLSpanElement>(".profile_controllers")
-    let err = (inp: HTMLInputElement, ms: string, s_o?: boolean) => this.err_msg(inp, ms, s_o)
-    let valuserfunction = (u: Cred) => this.apicall(u)
-    let sentout = (m: string) => this.sendoutuser(m)
-    let server_err_handler = (m: string, b: boolean) => this.end_opertion_and_say(m, b)
-    let val = (inp: HTMLInputElement, msg: HTMLParagraphElement) => this.helper.pass_validator(inp, msg)
-    let sub_to_server = (eve: SubmitEvent) => this.sendtoserver(eve, parsed_data.user)
-    let frm_to_sub_val_open = (frm: HTMLFormElement) => this.val_to_open_sub_btn(frm)
-    let compObj = this
+      con_pass_btn?.addEventListener("click", con_pass)
+      let profile_con = maindocument.querySelector<HTMLSpanElement>(".profile_controllers")
+      let err = (inp: HTMLInputElement, ms: string, s_o?: boolean) => this.err_msg(inp, ms, s_o)
+      let valuserfunction = (u: Cred) => this.apicall(u)
+      let sentout = (m: string) => this.sendoutuser(m)
+      let server_err_handler = (m: string, b: boolean) => this.end_opertion_and_say(m, b)
+      let val = (inp: HTMLInputElement, msg: HTMLParagraphElement) => this.helper.pass_validator(inp, msg)
+      let sub_to_server = (eve: SubmitEvent) => this.sendtoserver(eve, parsed_data.user)
+      let frm_to_sub_val_open = (frm: HTMLFormElement) => this.val_to_open_sub_btn(frm)
+      let compObj = this
+
+    pw_form?.classList.add("hide")
+    us_form?.classList.add("hide")
+    main_edit_model?.querySelector("#model_changer_holder")?.classList.remove("hide")
     allinputs?.forEach(item => {
       item.addEventListener("input", change_verify)
       item.addEventListener("blur", blur_verify)
@@ -190,7 +207,7 @@ export class NavComponent {
       pw_cl_btn.addEventListener("click", change_panel)
       us_cl_btn.addEventListener("click", change_panel)
     }
-    function change_panel(eve: MouseEvent) {
+    function change_panel(eve: MouseEvent){
       let m = eve.target as HTMLLIElement,
         parent_of_m = m.parentElement,
         back_btn: HTMLElement | null | undefined = profile_con?.querySelector("#bck_btn")
@@ -331,15 +348,42 @@ export class NavComponent {
       }
     }
   }
-
-  setup_email_verification(n: HTMLDivElement) {
+  setup_email_verification(n: HTMLDivElement , s:string) {
+    let parsed_user_data : UserCahedData = JSON.parse(s)
     let container = n.querySelector<HTMLDivElement>(".verify"),
       classobj = this,
       form = container?.querySelector<HTMLFormElement>("form"),
       input = form?.querySelector<HTMLInputElement>("input[type='email']"),
       icon_holder = form?.closest(".profile")?.querySelector<HTMLSpanElement>(".profile_controllers")
-    let all_dom = form?.closest(".floater")?.querySelector<HTMLSpanElement>(".loader_msg")
+      let all_dom = form?.closest(".floater")?.querySelector<HTMLSpanElement>(".loader_msg"),
+      knownUserDom = container?.querySelector(".user_known"),
+      mot_known_user = container?.querySelector(".verify_user"),
+      switc_btn = knownUserDom?.querySelector<HTMLButtonElement>("button"),
+      setter_of_ver = container?.querySelector("#if_veri_or_not"),
+      tit_Char = container?.querySelector<HTMLParagraphElement>(".tit_letter"),
+      user_holder = container?.querySelector<HTMLSpanElement>("#us_fielder")
 
+      if(tit_Char && user_holder){
+        tit_Char.style.background = classobj.color.background
+        tit_Char.textContent = classobj.returnfirststring(parsed_user_data.user)
+        user_holder.textContent = parsed_user_data.user
+      } 
+
+      switc_btn?.addEventListener("click",switch_k_uk)
+
+
+    if(parsed_user_data.verification){
+      switc_btn?.classList.add("hide")
+      setter_of_ver?.classList.add("verified")
+    }else{
+      knownUserDom?.classList.remove("hide")
+      mot_known_user?.classList.add("hide")
+    }
+
+    function switch_k_uk (){
+      knownUserDom?.classList.add("hide")
+      mot_known_user?.classList.remove("hide")
+    }
 
     input?.addEventListener("input", (e) => {
       let inputDOM = e.target as HTMLInputElement,
@@ -439,7 +483,8 @@ export class NavComponent {
               } else {
                 form?.classList.remove("disabled")
                 form?.reset()
-                if (all_dom) classobj.load_to_spin(all_dom, "s_w_m", { m: "Error while sending email, please try another email" })
+                
+                if (all_dom) classobj.load_to_spin(all_dom, "s_w_m", { m: res.condition == 0 ? "Error while sending email, please try another email": "this email has already been used by another user, pls try another email" })
               }
             },
             error: (err: any) => {
@@ -797,6 +842,8 @@ export class NavComponent {
     all_left_lists = all_left_lists_holder?.querySelectorAll<HTMLLIElement>("li"),
     all_pages = home_dom?.querySelectorAll<HTMLDivElement>(".page"),
     classobj = this
+    let data = localStorage.getItem("BUW_data")
+
     
     if(all_left_lists && all_pages){
       all_left_lists.forEach((item) => {
@@ -806,7 +853,7 @@ export class NavComponent {
           if(item.dataset['page'])
             set_page(item.dataset['page'])
           else
-          this.helper.endModal(() => classobj.logoutUser())
+            this.logoutUser()
         }
       })
     }
@@ -816,6 +863,17 @@ export class NavComponent {
         item.classList.add("hide")
         if(item.dataset['page'] == pg_name) item.classList.remove("hide")
       })
+      switch(pg_name){
+        case "dashboard": classobj.set_up_user_dashbord(home_dom)
+        break;
+        case "edit": 
+          if(data) classobj.set_up_edit_panel(data , home_dom)
+        break
+        case "verify": if(data) classobj.setup_email_verification(home_dom , data)
+        break
+        default : alert("me")
+        break
+      }
     }
   }
 

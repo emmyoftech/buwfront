@@ -6,29 +6,32 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-image: url(../assets/static/w_3.jpg);
+    background-image: url(../assets/static/ffr.jpg);
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    filter: blur(var(--large_number));
+    filter: blur(5px);
 }
 .main-app.loggedIn{
     background-image: none;
     background: black;
 }
 .float_back.loggedIn{
-    background-color: #000000c6;
+    background-color: #000000;
     background-blend-mode: color-dodge;
     background-image: url(../assets/static/skyline.jpg);
 }
 .main-app{
-    background-image: url(../assets/static/w_3.jpg);
+    background-image: url(../assets/static/ffr.jpg);
     background-attachment: fixed;
     background-position: right;
     background-size: cover;
     position: absolute;
-    width: 92%;
+    background-blend-mode: darken;
+    width: 95%;
+    min-width: 370px;
     height: 90%;
+    min-height: 600px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -40,7 +43,10 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(../assets/static/skyline.jpg);
+    background-image: url(../assets/static/comp.jpg);
+    mix-blend-mode: luminosity;
+    background-color: rgba(0, 0, 255, 0.933);
+    background-blend-mode: hue;
     z-index: -1;
     background-size: cover;
     background-position: center;
@@ -59,6 +65,10 @@
     .main-app{
         background-position: none;
         background-position-x: 50%;
-        background-image: url(../assets/static/docx.jpg)
+        background-image: url(../assets/static/phone_size.jpg);
+        box-shadow: none;
+    }
+    .float_back{
+        background-image: url(../assets/static/phone_size.jpg);
     }
 }

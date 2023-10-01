@@ -53,12 +53,12 @@ export class AppComponent implements OnInit{
 
   bubblefall():void{
     let r = document.querySelector(".floatboxes") 
-    if(r != null && window.innerWidth >1200){
+    if(r != null){
       for(let i = 0; i < 40; i++){
         let box = window.document.createElement("div")
-        let w_h = this.modal.randomArrayWithRange(10,50)
-        box.className = "tiny-box class"
-        box.style.animationDuration = this.modal.randomArrayWithRange(30,50) + "s"
+        let w_h = this.modal.randomArrayWithRange(50,100)
+        box.className = "tiny-box"
+        box.style.animationDuration = this.modal.randomArrayWithRange(50,100) + "s"
         box.style.width = w_h + "px"
         box.style.height = w_h + "px"
 
@@ -66,6 +66,23 @@ export class AppComponent implements OnInit{
       }
     }
   }
+  change_to_Home ( eve : boolean) :void {
+    this.see_view = eve
+  }
+  open_view(eve : boolean) : void{
+    this.see_view = eve
+  }
+
+
+
+
+
+
+
+
+
+
+
   bublewave():void{
     let parent = document.querySelector(".bubblepop")
     if(parent){
@@ -100,14 +117,6 @@ export class AppComponent implements OnInit{
       },5000)
     }
   }
-
-  change_to_Home ( eve : boolean) :void {
-    this.see_view = eve
-  }
-  open_view(eve : boolean) : void{
-    this.see_view = eve
-  }
-
   svg_animations(index: number):string{
     let svg_patterns = [
       `

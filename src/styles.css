@@ -7,18 +7,13 @@
 /* ANIMATION BLOCK */
 @keyframes updown {
     0%{
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
         transform: translateY(1000px);
     }
-    50%{
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-    }
     100%{
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
         transform: translateY(-1000px);
     }
 }
-@keyframes waveEffect {
+/* @keyframes waveEffect {
     0%{
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
@@ -28,7 +23,7 @@
     100%{
         border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     }
-}
+} */
 @keyframes rot {
     from{
         transform: rotate(0deg);
@@ -84,7 +79,7 @@ body{
     min-width: 320px;
     max-width: 600px;
     border-radius: var(--base_number);
-    padding: 0  var(--base_number) var(--base_number) var(--base_number) ;
+    padding: 0  var(--base_number);
     transition: .5s var(--primary_transition);
     box-shadow: var(--t_shadow);
     display: flex;
@@ -135,6 +130,7 @@ body{
     color: var(--failed_color);
 }
 .float-box .norm_btn{
+    color: var(--passive_color);
     height: max-content;
     padding: var(--small_number) var(--large_number);
     border-radius: var(--base_number);
@@ -340,11 +336,15 @@ body{
     flex-wrap: wrap;
 }
 .tiny-box{
-    box-shadow: var(--bubbleShadowlow);
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.1),
+    15px 25px 10px rgba(0, 0, 0, 0.1),
+    15px 20px 20px rgba(0, 0, 0, 0.1),
+    inset -10px -10px 15px rgba(255, 255, 255, 0.1);
     animation: updown ease-in-out infinite;
     transform: translateY(1000px);
+    border-radius: 50%;
 }
-.bubblepop{
+/* .bubblepop{
     position: fixed;
     width: 80%;
     height: 100%;
@@ -359,7 +359,7 @@ body{
     opacity: 0;
     top: 0;
     left: 0;
-}
+} */
 .btn_holder{
     width: 70%;
     display: flex;
@@ -405,7 +405,7 @@ body{
     justify-content: space-evenly;
     gap: var(--large_number);
     align-items: center;
-    padding-top: var(--large_number);
+    padding: var(--large_number) 0;
 }
 .ham button{
     padding: var(--base_number) 0;

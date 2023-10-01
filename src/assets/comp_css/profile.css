@@ -30,12 +30,14 @@
 }
 .pro_holder .left{
     flex: 1;
+    min-width: 100px;
+    padding-right: var(--base_number);
     position: relative;
 }
 .left .ln{
     position: absolute;
     height: 100%;
-    right: -20px;
+    right: 0px;
     top: 0;
     box-shadow: 2px 0px 5px 1px rgba(135, 207, 235, 0.222);
     border: 1px solid rgba(135, 207, 235, 0.206);
@@ -350,8 +352,13 @@
 }
 .verify{
     display: flex;
-    flex-flow: column;
+}
+.verify_user ,.user_known{
+    flex: 1;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    flex-flow: column;
     gap: var(--large_number);
     padding-top: var(--large_number);
 }
@@ -383,6 +390,105 @@
     display: flex;
     gap: var(--large_number);
     align-items: flex-end;
+}
+.user_known .tit_letter{
+    width: 100px;
+    height: 100px;
+    border: outset 10px var(--title_font_color);
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    font-family: var(--body_font);
+    font-size: calc(var(--base_number) * 8);
+    text-transform: capitalize;
+    margin-bottom: var(--large_number);
+    color: var(--passive_color);
+}
+.user_known ul{
+    width: 70%;
+    min-width: 300px;
+    height: max-content;
+    display: flex;
+    flex-flow: column;
+    gap: var(--large_number);
+    align-items: stretch;
+}
+.user_known ul li{
+    height: 30px;
+    display: flex;
+    border-radius: var(--small_number);
+    font-size: calc(var(--base_number) + 2px);
+    gap: var(--large_number);
+}
+.user_known ul li p{
+    width: 90px;
+    background-color: var(--low_standard_color);
+    display: grid;
+    place-items: center;
+    font-family: var(--title_font);
+    text-transform: capitalize;
+    font-weight: bold;
+    border-radius: var(--small_number);
+}
+.user_known ul li span{
+    flex: 2;
+    display: grid;
+    place-items: center;
+    color: var(--passive_color);
+    font-style: normal;
+    font-family: var(--body_font);
+    box-shadow: var(--t_shadow);
+    background-color: var(--low_black_color);
+    border-radius: var(--small_number);
+
+}
+.user_known ul li span:has(.fa-solid){
+    position: relative;
+}
+.user_known ul li span:has(.fa-solid) i{
+    position: absolute;
+    right: var(--base_number);
+}
+.user_known ul li span:has(.fa-solid) b{
+    font-style: normal;
+    text-transform: capitalize;
+    font-weight: normal;
+}
+.user_known ul li span:has(.fa-solid):is(.verified) i.fa-xmark{
+    display: none;
+}
+.user_known ul li span:has(.fa-solid):not(.verified) i.fa-check{
+    display: none;
+}
+.user_known ul li span:has(.fa-solid):is(.verified) .nvr{
+    display: none;
+}
+.user_known ul li span:has(.fa-solid):not(.verified) .vr{
+    display: none;
+}
+.user_known ul li span:has(.fa-solid) i.fa-xmark{
+    color: var(--failed_color);
+}
+.user_known ul li span:has(.fa-solid) i.fa-check{
+    color: var(--succ_color);
+}
+.user_known button{
+    margin-bottom: var(--large_number);
+    color: var(--standard_color);
+    border: var(--line_blue);
+    border-radius: var(--small_number);
+    padding: var(--base_number);
+    text-transform: capitalize;
+    background-color: transparent;
+    outline: none;
+    box-shadow: var(--b_r_shadow);
+    cursor: pointer;
+    transition: .4s var(--primary_transition);
+    background-color: var(--low_black_color);
+}
+.user_known button:hover{
+    background-color: var(--standard_color);
+    color: var(--passive_color);
 }
 @media (max-width: 1000px) {
     .profile_controllers i:is(#menu_icon){

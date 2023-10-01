@@ -2,9 +2,9 @@
     <div class="actionContainer">
         <div class="view">
             <div class="img_big_box">
-                <img [src]="oneStrap" alt="strap image">
-                <img [src]="oneCase" alt="case image">
-                <img [src]="oneDial" alt="dial image">
+                <img *ngIf="oneStrap" [src]="oneStrap" class="st" alt="strap image">
+                <img *ngIf="oneCase" [src]="oneCase" class="cs" alt="case image">
+                <img *ngIf="oneDial"[src]="oneDial" class="di" alt="dial image">
             </div>
             <div class="priceset">
                 <span>

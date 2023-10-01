@@ -60,17 +60,19 @@ main{
 }
 .img_big_box img{
     position: absolute;
-    width: 100%;
     height: 100%;
     object-fit: contain;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.img_big_box img:nth-child(2){
+.img_big_box img.st{
+    width: 100%;
+}
+.img_big_box img.cs{
     width: 60%;
 }
-.img_big_box img:nth-child(3){
+.img_big_box img.di{
     width: 50%;
 }
 
@@ -243,6 +245,9 @@ main{
     outline: none;
     border: none;
 }
+.buttonhold button:nth-child(1){
+    color: var(--passive_color);
+}
 .buttonhold button:nth-last-child(1){
     background-color: cadetblue;
 }
@@ -331,5 +336,12 @@ main{
     }
     .coll_unit{
         height: 100px;
+    }
+    .view-control{
+        height: 200px;
+        overflow-y: scroll;
+    }
+    .view-control::-webkit-scrollbar{
+        display: none;
     }
 }

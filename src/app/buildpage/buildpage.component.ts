@@ -14,8 +14,7 @@ import { MyResponse } from '../interfaces/my-response';
 })
 
 export class BuildpageComponent implements OnInit{
-  constructor (private watchserveice : WatchpartsService, private modal : ModalsServices){
-  }
+  constructor (private watchserveice : WatchpartsService, private modal : ModalsServices){}
 
   oneDial: string | undefined
   oneStrap: string | undefined
@@ -39,7 +38,7 @@ export class BuildpageComponent implements OnInit{
   collection_list: Collection[] | undefined
 
   ngOnInit(): void {
-    this.onGetwatchparts(()=>this.onShuffle())
+    this.onGetwatchparts()
     this.get_collections_data()
   }
 
@@ -47,7 +46,7 @@ export class BuildpageComponent implements OnInit{
     this.mob_to_open.emit(false)
   }
 
-  onGetwatchparts(run: ()=> void): void {
+  onGetwatchparts(run?: ()=> void): void {
     this.watchserveice.getWatchParts().subscribe({
       next: (response) => {
         let dial = [], watchcase = [], strap = []
@@ -70,7 +69,7 @@ export class BuildpageComponent implements OnInit{
           this.onGetwatchparts(() => this.onShuffle())
         })
       },
-      complete: () => run()
+      complete: () => {if(run) run()}
     })
   }
 

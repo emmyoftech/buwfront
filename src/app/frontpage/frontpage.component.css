@@ -20,7 +20,8 @@
     display: flex;
     flex-flow: column;
     align-items: flex-start;
-    justify-content: center;
+    margin-bottom: 40px;
+    justify-content: flex-end;
     gap: var(--base_number);
     color: var(--passive_color);
 }
@@ -32,17 +33,26 @@
     gap: calc(var(--large_number) + var(--base_number));
     padding: var(--large_number);
     border-radius: var(--large_number);
-    box-shadow: 0px 0px 30px 20px black ,
-    -5px -5px 10px 5px rgba(135, 207, 235, 0.461);
+    box-shadow: 0px 0px 30px black;
     border-top: 2px rgba(135, 207, 235, 0.464) solid;
 }
+.go_to_view{
+    display: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: var(--large_number);
+    box-shadow: var(--bubbleShadowlow);
+    border-radius: var(--small_number);
+    font-size: var(--base_number);
+}
 .hero_panel h1{
-    font-size: calc(var(--base_number) * 4);
+    font-size: calc(var(--base_number) * 3);
     font-family: var(--title_font);
     padding: var(--large_number);
     border-radius: var(--base_number);
     color: var(--title_font_color);
-    text-shadow: 5px 5px 10px #000000;
+    text-shadow: 0px 10px 30px #000000;
 }
 .hero_panel h4{
     font-size: calc(var(--small_number) * 4);
@@ -98,7 +108,7 @@
 }
 .float_footer{
     position: absolute;
-    width: 95%;
+    width: 5%;
     height: 100px;
     bottom: 10%;
     padding: var(--large_number);
@@ -112,6 +122,7 @@
     font-family: var(--body_font);
     font-weight: bold;
     align-self: flex-end;
+    display: none
 }
 .float_footer span{
     overflow: hidden;
@@ -119,7 +130,7 @@
     font-family: var(--title_font);
     align-self: center;
     width: 50px;
-    height: 100px;
+    height: 80px;
     position: absolute;
     z-index: 3;
     bottom: -20%;
@@ -139,6 +150,7 @@
     box-shadow: var(--bubbleShadowlow);
     background-color: var(--low_black_color);
 }
+
 @keyframes identifier {
     0%{
         transform: translateY(-50px);
@@ -153,9 +165,15 @@
         transform: translateY(100px);
     }
 }
+@media (max-width: 800px) {
+    .float_footer span{
+        display: none;
+    }
+}
 @media (max-width: 500px) {
     .body{
-        align-items: center;
+        align-items: flex-end;
+        padding-bottom: var(--large_number);
     }
     .hero_panel{
         padding: 0;
@@ -167,8 +185,12 @@
     .corner_shadow{
         background-color: rgba(0, 0, 0, 0.601);
     }
-    .float_footer span{
+    .float_footer{
         box-shadow: var(--bubbleShadowlow);
         background-color: var(--low_black_color);
+        display: none;
+    }
+    .go_to_view{
+        display: grid;
     }
 }

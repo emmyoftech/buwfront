@@ -14,8 +14,8 @@ nav button{
     text-transform: uppercase;
     font-family: var(--title_font);
     font-weight: bolder;
-    padding: var(--base_number) var(--large_number);
-    background-color: var(--standard_color);
+    padding: var(--base_number);
+    background-color: var(--low_standard_color);
     border-radius: var(--small_number);
     box-shadow: var(--bubbleShadowmid);
     border: none;
@@ -31,7 +31,7 @@ nav button{
     margin-left: var(--large_number);
 }
 nav button:hover{
-    background-color: var(--low_standard_color);
+    background-color: var(--standard_color);
 }
 .icon_links{
     width: 40%;
@@ -45,8 +45,8 @@ nav button:hover{
     font-size: calc(var(--base_number) * 2);
     color: var(--passive_color);
     box-shadow: var(--bubbleShadowlow);
+    border-radius: var(--base_number);
     padding: var(--small_number);
-    animation:  waveEffect 2s ease-in-out infinite;
     transition: .3s var(--primary_transition);
 }
 .icon_links a:hover{
