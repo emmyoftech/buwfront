@@ -101,7 +101,7 @@ export class ModalsServices {
             this.inHtml = `
             <form id="log_sign_frm">
                 <p class="frm_msg hide">opertion has failed</p>
-                <span class="hide" ><i class="fa-solid fa-spinner"></i></span>
+                <span class="hide" id="hhh"><i class="fa-solid fa-spinner"></i></span>
                 <label>
                     <input type="text" name="username" required placeholder="${state == "login" ? "Enter your username..." : "Enter a username..."}" value="${user() == "new" ? "" : user()}">
                     <p class="inp_msg"></p>

@@ -360,6 +360,9 @@ body{
     top: 0;
     left: 0;
 } */
+.floater #hhh{
+    color: var(--passive_color);
+}
 .btn_holder{
     width: 70%;
     display: flex;

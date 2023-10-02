@@ -40,11 +40,12 @@
     display: none;
     width: 30px;
     height: 30px;
+    place-items: center;
     position: absolute;
     right: var(--large_number);
     box-shadow: var(--bubbleShadowlow);
     border-radius: var(--small_number);
-    font-size: var(--base_number);
+    font-size: calc(var(--base_number) * 2);
 }
 .hero_panel h1{
     font-size: calc(var(--base_number) * 3);

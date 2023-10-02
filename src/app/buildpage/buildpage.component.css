@@ -66,6 +66,21 @@ main{
     left: 50%;
     transform: translate(-50%,-50%);
 }
+.dum_img{
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    inset: 15%;
+    border-radius: var(--large_number);
+    overflow: hidden;
+    object-fit: cover;
+    opacity: .2;
+    pointer-events: none;
+    transition: .4s ease;
+}
+.dum_img.hide{
+    opacity: 0;
+}
 .img_big_box img.st{
     width: 100%;
 }
