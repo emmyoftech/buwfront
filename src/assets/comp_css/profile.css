@@ -412,6 +412,7 @@
     flex-flow: column;
     gap: var(--large_number);
     align-items: stretch;
+    margin-bottom: var(--large_number);
 }
 .user_known ul li{
     height: 30px;

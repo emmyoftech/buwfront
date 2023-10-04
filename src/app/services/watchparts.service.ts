@@ -105,4 +105,8 @@ export class WatchpartsService {
       responseType: 'json'
     })
   }
+
+  get_email (m :string) : Observable<MyResponse>{
+    return this.http.get<MyResponse>(environment.BACKEND_BASE_URL.concat("g_mail/" + m))
+  }
 }

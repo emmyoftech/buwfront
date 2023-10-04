@@ -12,9 +12,7 @@ import { Cred } from '../interfaces/cred';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  constructor(public helper: ModalsServices, private watch: WatchpartsService) {
-    // this.open_profiler()
-  }
+  constructor(public helper: ModalsServices, private watch: WatchpartsService) {}
   @Input() parentData !: boolean
   @Input() k_y_c !: boolean
   @Input() userdata !: UserCahedData
@@ -369,12 +367,15 @@ export class NavComponent {
         user_holder.textContent = parsed_user_data.user
       } 
 
+      
+
       switc_btn?.addEventListener("click",switch_k_uk)
 
 
     if(parsed_user_data.verification){
       switc_btn?.classList.add("hide")
       setter_of_ver?.classList.add("verified")
+      addEmail()
     }else{
       knownUserDom?.classList.remove("hide")
       mot_known_user?.classList.add("hide")
@@ -384,6 +385,26 @@ export class NavComponent {
       knownUserDom?.classList.add("hide")
       mot_known_user?.classList.remove("hide")
     }
+
+    function addEmail (){
+      let emailDOm = knownUserDom?.querySelector('#us_email')
+      classobj.watch.get_email(parsed_user_data.user).subscribe({
+        next: (e) => {
+          if(e.condition == 1){
+            if(e.msg) setmail(e.msg)
+          }
+        }
+      })
+
+      function setmail (e: string){
+        if(emailDOm){
+          emailDOm.classList.remove("hide")
+          let span_field = emailDOm.querySelector("span")
+          if(span_field) span_field.textContent = e
+        }
+      }
+    }
+
 
     input?.addEventListener("input", (e) => {
       let inputDOM = e.target as HTMLInputElement,
